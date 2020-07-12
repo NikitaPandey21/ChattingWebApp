@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "chatapp-51d4d": {
+      "hosting": {
+        "chattingApp": [
+          "chatapp-51d4d"
+        ]
+      }
+    }
+  }
+}

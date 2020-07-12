@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="list-group">
+        <span href="#" class="list-group-item active">
+            {{ chat.name }}
+        </span>
+        <div class="row">
+        <app-chat-bar></app-chat-bar>
+    </div>
+    <div class="col align-self-end">
+        <input type="text" placeholder="Type Here..." class="form-control" (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal"> 
+    </div>
+        </div>
+</div>

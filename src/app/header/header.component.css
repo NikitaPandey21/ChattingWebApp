@@ -1,0 +1,8 @@
+.navbar-dark {
+    background-color: black;
+}
+
+li:hover {
+    background-color: green;
+    font-weight: bolder;
+}

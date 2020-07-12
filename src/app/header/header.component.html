@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#"> 
+    <img src="https://neilpatel.com/wp-content/uploads/2017/04/chat.jpg"
+    style="max-height: 30px;"></a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav bg-black bg-opacity-100">
+          <li><a>Your Chats</a></li>
+          <li><a>Connect</a></li>
+          <li (click)="onSaveData()"><a>Save</a></li>
+          
+      </ul>
+      <ul class="nav navbar-nav navbar-right ml-auto">
+          <li class="dropdown" appDropdown>
+              <a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+              <ul class="dropdown-menu" style="cursor: pointer;">
+                  <li><a>Save</a></li>
+                  <li><a>Fetch Data</a></li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+</nav>
