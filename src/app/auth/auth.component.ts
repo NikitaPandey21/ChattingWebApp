@@ -15,6 +15,8 @@ import { DataStorageService } from '../shared/data-storage.service';
 export class AuthComponent implements OnInit {
   isLoginMode = true;
   chatobj: Chat;
+  error: string = null;
+
   constructor(private authService: AuthService, 
     private chatService:ChatGroupService,
     private router: Router,
@@ -66,8 +68,9 @@ export class AuthComponent implements OnInit {
             );
             this.router.navigate(['/chat']);
         },
-        error => {
-            console.error(error)
+        errorMessage => {
+          console.log(errorMessage);
+          this.error = errorMessage;
         }
     );
     form.reset();

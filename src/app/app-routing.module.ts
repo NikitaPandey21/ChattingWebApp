@@ -8,7 +8,7 @@ import { AuthComponent } from './auth/auth.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/chat', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
     { path: 'chat', component: ChatGroupComponent, children: [
         { path: '', component: ChatStartComponent },
         { path: ':id', component: ChatBoxComponent },
