@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { ChatsComponent } from './chat-group/chat-list/chats/chats.component';
 import { ChatBarComponent } from './chat-group/chat-box/chat-bar/chat-bar.component';
 import { AuthComponent } from './auth/auth.component';
 import { SortPipe } from './chat-group/chat-list/sort.pipe';
+import { AuthInterceptorService } from './auth/auth-interceptors.service';
 
 
 
@@ -38,7 +39,11 @@ import { SortPipe } from './chat-group/chat-list/sort.pipe';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

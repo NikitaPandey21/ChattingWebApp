@@ -5,16 +5,19 @@ import { ChatGroupComponent } from './chat-group/chat-group.component';
 import { ChatBoxComponent } from './chat-group/chat-box/chat-box.component';
 import { ChatStartComponent} from './chat-group/chat-start/chat-start.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth-gaurd.service';
+import { IsLoggedInGuard } from './auth/isLoggedIn-gaurd.service';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
-    { path: 'chat', component: ChatGroupComponent, children: [
+  { path: '', redirectTo: '/chat', pathMatch: 'full' },
+    { path: 'chat', component: ChatGroupComponent,canActivate:[AuthGuard],
+     children: [
         { path: '', component: ChatStartComponent },
         { path: ':id', component: ChatBoxComponent },
     ] },
 
-    { path:'auth', component:AuthComponent}
+    { path:'auth',component:AuthComponent, canActivate:[IsLoggedInGuard]}
 ];
 
 @NgModule({

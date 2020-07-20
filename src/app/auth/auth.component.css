@@ -1,0 +1,13 @@
+.container{
+    position: fixed;
+    margin-top: 100px;
+    height: 400px;
+    padding-top: 5%;
+    width: 1200px;
+    
+    
+}
+
+.container:hover {
+    box-shadow: 0 0 5px  chocolate;
+}

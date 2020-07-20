@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#"> 
+    <a class="navbar-brand" id="image"> 
     <img src="https://neilpatel.com/wp-content/uploads/2017/04/chat.jpg"
     style="max-height: 30px;"></a>
 
@@ -11,6 +11,8 @@
           
       </ul>
       <ul class="nav navbar-nav navbar-right ml-auto">
+        <li>
+            <a style="cursor: pointer;" (click)="onlogout()">Logout</a></li>
           <li class="dropdown" appDropdown>
               <a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
               <ul class="dropdown-menu" style="cursor: pointer;">
