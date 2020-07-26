@@ -6,6 +6,7 @@ import { Chat } from '../chat-group/chat-group.model';
 import { ChatGroupService } from '../chat-group/chat-group.service';
 import { Router } from '@angular/router';
 import { DataStorageService } from '../shared/data-storage.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-auth',
@@ -14,14 +15,16 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class AuthComponent implements OnInit {
   isLoginMode = true;
-  chatobj: Chat;
+  chatobj: Chat[];
   error: string = null;
+  LoggedUser:string;
 
   constructor(private authService: AuthService, 
     private chatService:ChatGroupService,
     private router: Router,
     private dataStroreService: DataStorageService,
-    private chatGroupService: ChatGroupService) { }
+    private chatGroupService: ChatGroupService,
+    private cookieService:CookieService) { }
 
   ngOnInit(): void {
     this.dataStroreService.fetchUser().subscribe(
@@ -31,8 +34,9 @@ export class AuthComponent implements OnInit {
     );
   }
 
-  onSwitchMode(){
-    this.isLoginMode = !this.isLoginMode;
+  onSwitchMode(value:any){
+    // const mode = (<HTMLInputElement>document.getElementById(signMode)).value;
+    this.isLoginMode = value;
 }
   onSubmit(form: NgForm) {
     console.log(form.value['username']);
@@ -58,6 +62,17 @@ export class AuthComponent implements OnInit {
          this.dataStroreService.storeuser();
     }
     this.chatService.email = email;
+
+    this.chatobj = this.chatGroupService.getChatGroup();
+    for(var index in this.chatobj){
+      if(this.chatobj[index].email == this.chatService.email){
+        this.LoggedUser = this.chatobj[index].name;
+        break;
+      }
+    }
+    this.cookieService.set('username',this.LoggedUser);
+
+
     authObs.subscribe(
         resData => {
             console.log(resData);

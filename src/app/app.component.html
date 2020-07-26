@@ -1,8 +1,16 @@
+<!-- <div [ngStyle]="{backgroundColor:bgColor()}"></div> -->
+
 <div class="container-fluid" *ngIf="isAuthenticated">
   <app-header></app-header>
 </div>
 
+<!-- <div class="loginPage">
+  <img src="../assets/images/background.jpg">
+</div> -->
+
 <div class="container">
-<router-outlet></router-outlet>
+  
+  <router-outlet></router-outlet>
 </div>
+
 <!--  -->

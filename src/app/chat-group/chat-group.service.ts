@@ -23,7 +23,6 @@ export class ChatGroupService {
 
     private chat: Chat[]=[];
     getChatGroup(){
-        console.log("email..",this.email);
         return this.chat.slice();
     }
 

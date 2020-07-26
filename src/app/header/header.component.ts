@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AuthService } from '../auth/auth.service';
+import { CookieService } from 'ngx-cookie-service';
+import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
+
 
 
 @Component({
@@ -9,17 +12,19 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  cookieValue:string;
 
-  constructor(private dataStorage: DataStorageService,private authSer: AuthService) { }
+  constructor(private dataStorage: DataStorageService,
+    private authSer: AuthService,
+    private cookieService:CookieService) { }
 
   ngOnInit(): void {
-  }
-  onSaveData(){
-		this.dataStorage.storeuser();
+    this.cookieValue = this.cookieService.get('username');
+    console.log("cookieValue....",this.cookieValue);
   }
   
   onlogout(){
-    console.log("logout");
+    this.cookieService.deleteAll();
     this.authSer.logout();
   }
 }

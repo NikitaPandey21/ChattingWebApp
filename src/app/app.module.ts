@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { ChatBarComponent } from './chat-group/chat-box/chat-bar/chat-bar.compon
 import { AuthComponent } from './auth/auth.component';
 import { SortPipe } from './chat-group/chat-list/sort.pipe';
 import { AuthInterceptorService } from './auth/auth-interceptors.service';
+import { DropdownDirective } from './shared/dropdown.directive'
 
 
 
@@ -32,6 +34,7 @@ import { AuthInterceptorService } from './auth/auth-interceptors.service';
     ChatBarComponent,
     AuthComponent,
     SortPipe,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,9 @@ import { AuthInterceptorService } from './auth/auth-interceptors.service';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptorService,
     multi: true
-  }],
+  },
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

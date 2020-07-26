@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit {
   isAuthenticated = false;
   private userSub: Subscription;
+  background:string ="../asssts/image/background.jpg";
 
   constructor(private authService: AuthService){}
 
@@ -25,5 +26,9 @@ export class AppComponent implements OnInit {
 
   // ngOnDestroy() {
   //   this.userSub.unsubscribe();
+  // }
+
+  // bgColor(){
+  //   return 'red'
   // }
 }
